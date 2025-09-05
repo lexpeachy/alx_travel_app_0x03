@@ -21,25 +21,26 @@ from drf_yasg.views import get_schema_view
 from drf_yasg import openapi
 from django.http import JsonResponse
 
-
 schema_view = get_schema_view(
     openapi.Info(
         title="ALX Travel API",
-        default_version="v1",
+        default_version='v1',
         description="API documentation for ALX Travel App",
     ),
     public=True,
     permission_classes=(permissions.AllowAny,),
 )
 
+# ✅ Home endpoint
+def home(request):
+    return JsonResponse({"message": "Welcome to ALX Travel API. Visit /swagger/ for docs."})
+
 urlpatterns = [
-    path("", home),  # 👈 homepage route
+    path("", home),  # homepage route
     path("admin/", admin.site.urls),
     path("api/", include("listings.urls")),
     path("swagger/", schema_view.with_ui("swagger", cache_timeout=0), name="swagger-ui"),
 ]
-def home(request):
-    return JsonResponse({"message": "Welcome to ALX Travel API. Visit /swagger/ for docs."})
 
 
 
