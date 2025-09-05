@@ -104,6 +104,13 @@ CELERY_RESULT_SERIALIZER = "json"
 
 # Email backend (for testing, console)
 EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
+
+# Swagger / drf-yasg settings
+SWAGGER_SETTINGS = {
+    "USE_SESSION_AUTH": False,   # 🚀 disables Django login for Swagger
+    "SECURITY_DEFINITIONS": None,  # removes extra auth schemes unless you add JWT later
+}
+
 EMAIL_HOST = "smtp.gmail.com"       # if using real email
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
