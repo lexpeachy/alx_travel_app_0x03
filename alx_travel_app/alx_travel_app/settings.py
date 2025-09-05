@@ -1,7 +1,7 @@
 import os
 import environ
 from pathlib import Path
-
+import dj_database_url
 # Build paths inside the project
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -76,7 +76,9 @@ DATABASES = {
         "PORT": env("DB_PORT", default="3306"),
     }
 }
-
+DATABASES = {
+    "default": dj_database_url.config(default=env("DATABASE_URL"))
+}
 # REST Framework settings
 REST_FRAMEWORK = {
     "DEFAULT_SCHEMA_CLASS": "rest_framework.schemas.coreapi.AutoSchema"
