@@ -2,6 +2,11 @@ import os
 import environ
 from pathlib import Path
 import dj_database_url
+from environ import Env
+
+env = Env()
+Env.read_env()
+
 # Build paths inside the project
 BASE_DIR = Path(__file__).resolve().parent.parent
 
