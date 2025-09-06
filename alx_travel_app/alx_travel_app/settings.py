@@ -41,6 +41,7 @@ CHAPA_BASE_URL = env("CHAPA_BASE_URL", default="https://api.chapa.co/v1")
 
 MIDDLEWARE = [
     "corsheaders.middleware.CorsMiddleware",
+    "whitenoise.middleware.WhiteNoiseMiddleware",
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
@@ -93,7 +94,9 @@ REST_FRAMEWORK = {
 CORS_ALLOW_ALL_ORIGINS = True
 
 # Static files
-STATIC_URL = "static/"
+STATIC_URL = "/static/"
+STATIC_ROOT = BASE_DIR / "staticfiles"   # where collectstatic will put files
+STATICFILES_DIRS = []
 
 # Celery & RabbitMQ
 CELERY_BROKER_URL = "amqp://guest:guest@localhost:5672//"  # RabbitMQ default
